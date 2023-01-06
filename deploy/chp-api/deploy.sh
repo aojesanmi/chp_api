@@ -22,6 +22,12 @@ do
   rm values.yaml.bak
 done
 
+sed -i.bak \
+    -e "s/APP_SECRET_KEY_VALUE/$APP_SECRET_KEY/g;s/DB_DATABASE_VALUE/$DB_DATABASE/g" \
+    -e "s/DB_USERNAME_VALUE/$DB_USERNAME/g;s/DB_PASSWORD_VALUE/$DB_PASSWORD/g" \
+    values-ncats.yaml
+rm values-ncats.yaml
+
 kubectl apply -f namespace.yaml
 
 # deploy helm chart
